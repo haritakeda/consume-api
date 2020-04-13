@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7f0a865a-1875-4743-ae5f-b634ccc931f0" >
+		<http:listener-connection host="0.0.0.0" port="${http.private.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="8a6e3f98-abc8-4fd8-afb0-e530bf360a3e" file="config\dev.yaml" />
+	<flow name="consume-apiFlow" doc:id="d110acbd-8ae2-4b56-92c8-a0374bf90db5" >
+		<http:listener doc:name="Listener" doc:id="2747b834-f02f-484e-b1a9-ae280e9f6654" path="${api.path}" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="8a5e82a0-cd6f-4096-ab85-6cd0442426a2" message="consume flow started"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="6aa2316e-be36-4c30-8d6d-cefd03424369" />
+		<logger level="INFO" doc:name="Logger" doc:id="d773158e-5610-47aa-ab86-df416c3ede2c" message="consume flow ended"/>
+	</flow>
+</mule>
