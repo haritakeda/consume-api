@@ -48,6 +48,7 @@
  		 	<groupId>com.takeda</groupId>
   			<artifactId>publish-api</artifactId>
   			<version>1.0.0</version>
+  			<classifier>mule-application</classifier>
 		</dependency>
 	</dependencies>
 
@@ -79,6 +80,13 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </pluginRepository>
+        
+        <pluginRepository>
+           	<id>github</id>
+     		<name>GitHub haritaked Apache Maven Packages</name>
+     		<layout>default</layout>
+     		<url>https://maven.pkg.github.com/haritakeda/publish-api</url>            
         </pluginRepository>
     </pluginRepositories>
 
